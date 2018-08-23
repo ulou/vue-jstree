@@ -6,13 +6,11 @@
 
 ##  Introduction
 
-A extended version of tree plugin for vue2
-
-<img src="./pic.png" width="100%" align=center />
+A extended version of tree plugin for vue2 provided by [vue-jstree](https://github.com/zdy1988/vue-jstree)
 
 ##  DEMO
 
-[http://zdy1988.github.io/vue-jstree](https://github.com/ulou/vue-jstree)
+[Live Demo](https://github.com/ulou/vue-jstree)
 
 ##  NPM
 
@@ -224,4 +222,4 @@ more elegant:
 
 Licensed under the [MIT license](https://opensource.org/licenses/mit-license.php).
 
-Thanks For [jstree](https://github.com/vakata/jstree)'s UI
+Thanks For [jstree](https://github.com/vakata/jstree)'s UI and [zdy1988](https://github.com/zdy1988/vue-jstree)
