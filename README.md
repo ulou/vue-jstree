@@ -1,18 +1,18 @@
 # vue-jstree
 
-[![npm](https://img.shields.io/npm/dt/vue-jstree.svg?style=flat-square)](https://github.com/zdy1988/vue-jstree)
+[![npm](https://img.shields.io/npm/dt/vue-jstree.svg?style=flat-square)](https://github.com/ulou/vue-jstree)
 
 [English](./README.md)
 
 ##  Introduction
 
-A tree plugin for vue2
+A extended version of tree plugin for vue2
 
 <img src="./pic.png" width="100%" align=center />
 
 ##  DEMO
 
-[http://zdy1988.github.io/vue-jstree](http://zdy1988.github.io/vue-jstree)
+[http://zdy1988.github.io/vue-jstree](https://github.com/ulou/vue-jstree)
 
 ##  NPM
 

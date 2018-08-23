@@ -1,18 +1,19 @@
 {
   "name": "vue-jstree",
-  "version": "2.1.6",
-  "description": "a tree plugin for vue2",
+  "version": "2.2.0",
+  "description": "a extended version tree plugin for vue2",
   "keywords": [
     "vue2",
-    "tree"
+    "tree",
+    "treeview"
   ],
-  "author": "zdy1988 <virus_zhh@126.com>",
+  "author": "ulou <ulou@onet.eu>",
   "main": "dist/vue-jstree.js",
   "private": false,
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zdy1988/vue-jstree.git"
+    "url": "https://github.com/ulou/vue-jstree.git"
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",

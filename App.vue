@@ -48,14 +48,17 @@
                     {
                         text: 'A',
                         selected: false,
+                        opened: true,
                         children: [
                             {
                                 text: 'AA',
                                 selected: false,
+                                opened: true,
                                 children: [
                                     {
                                         text: 'AAA',
                                         selected: false,
+                                        opened: true,
                                         children: [
                                             {text: 'Set 0', selected: false},
                                             {text: 'Set 1', selected: false},
@@ -67,6 +70,7 @@
                                     {
                                         text: 'AAB',
                                         selected: false,
+                                        opened: true,
                                         children: [
                                             {text: 'Set 5', selected: false},
                                             {text: 'Set 6', selected: false},
@@ -83,14 +87,17 @@
                     {
                         text: 'B',
                         selected: true,
+                        opened: true,
                         children: [
                             {
                                 text: 'BA',
                                 selected: true,
+                                opened: true,
                                 children: [
                                     {
                                         text: 'BAA',
                                         selected: true,
+                                        opened: true,
                                         children: [
                                             {text: 'Set 9', selected: true},
                                             {text: 'Set 10', selected: true},
@@ -102,6 +109,7 @@
                                     {
                                         text: 'BAB',
                                         selected: true,
+                                        opened: true,
                                         children: [
                                             {text: 'Set 14', selected: true},
                                             {text: 'Set 15', selected: true},

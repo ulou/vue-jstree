@@ -108,7 +108,7 @@
               },
               deep: true
           },
-          isAllAnchorsSelected(newVal, oldVal) {
+          isAllAnchorsSelected(newVal) {
               this.model.selected = newVal
           }
       },
@@ -137,9 +137,6 @@
           },
           isAllAnchorsSelected() {
               return this.model.children.every(function recursiveCheck(item) {
-                  if (item.children.length) {
-                      return item.children.every(recursiveCheck)
-                  }
                   return item.selected
               });
           },
