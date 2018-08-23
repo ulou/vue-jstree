@@ -107,6 +107,9 @@
                   this.handleGroupMaxHeight()
               },
               deep: true
+          },
+          isAllAnchorsSelected(newVal, oldVal) {
+              this.model.selected = newVal
           }
       },
       computed: {
@@ -124,11 +127,28 @@
                   {[this.klass]: !!this.klass}
               ]
           },
+          isAnyAnchorSelected() {
+              return this.model.children.some(function recursiveCheck(item) {
+                  if (item.children.length) {
+                      return item.children.some(recursiveCheck)
+                  }
+                  return item.selected
+              });
+          },
+          isAllAnchorsSelected() {
+              return this.model.children.every(function recursiveCheck(item) {
+                  if (item.children.length) {
+                      return item.children.every(recursiveCheck)
+                  }
+                  return item.selected
+              });
+          },
           anchorClasses () {
               return [
                   {'tree-anchor': true},
                   {'tree-disabled': this.model.disabled},
-                  {'tree-selected': this.model.selected},
+                  {'tree-square': this.isAnyAnchorSelected},
+                  {'tree-selected': this.model.selected && this.isAllAnchorsSelected},
                   {'tree-hovered': this.isHover}
               ]
           },
@@ -232,7 +252,6 @@
       },
       mounted () {
           this.handleGroupMaxHeight();
-          console.log(this.childrenCounter);
       }
   }
 </script>

@@ -41,6 +41,13 @@
 		&:hover { background-position:-(@image-height * 5 + @correction) -(@image-height * 1 + @correction); }
 	}
 
+	&.tree-checkbox-selection .tree-selected, .tree-square {
+		> .tree-checkbox {
+			background-position:-(@image-height * 6 + @correction) -@correction;
+			&:hover { background-position:-(@image-height * 6 + @correction) -(@image-height * 1 + @correction); }
+		}
+	}
+
 	&.tree-checkbox-selection .tree-selected, .tree-checked {
 		> .tree-checkbox {
 			background-position:-(@image-height * 7 + @correction) -@correction;

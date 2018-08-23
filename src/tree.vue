@@ -297,8 +297,6 @@
                 this.$set(this.data, 0, this.initializeLoading())
                 this.handleAsyncLoad(this.data, this)
             }
-            console.log('mounted tree');
-            console.log('childrenCounter: ', this.childrenCounter);
         },
         components: {
             TreeItem
