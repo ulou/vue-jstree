@@ -1,6 +1,6 @@
 <template>
     <div id="app" style="padding-bottom: 300px;">
-        <img src="./assets/logo.png">
+        <img src="assets/logo.png">
         <h1>{{ msg }}</h1>
 
         <h2>Extended TreeView</h2>
