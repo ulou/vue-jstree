@@ -86,17 +86,17 @@
                     },
                     {
                         text: 'B',
-                        selected: true,
+                        selected: false,
                         opened: true,
                         children: [
                             {
                                 text: 'BA',
-                                selected: true,
+                                selected: false,
                                 opened: true,
                                 children: [
                                     {
                                         text: 'BAA',
-                                        selected: true,
+                                        selected: false,
                                         opened: true,
                                         children: [
                                             {text: 'Set 9', selected: true},

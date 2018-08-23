@@ -110,6 +110,9 @@
           },
           isAllAnchorsSelected(newVal) {
               this.model.selected = newVal
+          },
+          isAnyAnchorSelected(newVal) {
+              if (newVal === false) this.mode.selected = false;
           }
       },
       computed: {
@@ -137,6 +140,9 @@
           },
           isAllAnchorsSelected() {
               return this.model.children.every(function recursiveCheck(item) {
+                  if (item.children.length) {
+                      return item.children.every(recursiveCheck)
+                  }
                   return item.selected
               });
           },
@@ -144,8 +150,8 @@
               return [
                   {'tree-anchor': true},
                   {'tree-disabled': this.model.disabled},
-                  {'tree-square': this.isAnyAnchorSelected},
-                  {'tree-selected': this.model.selected && this.isAllAnchorsSelected},
+                  {'tree-selected': this.model.selected},
+                  {'tree-square': this.isAnyAnchorSelected && !this.model.selected},
                   {'tree-hovered': this.isHover}
               ]
           },
