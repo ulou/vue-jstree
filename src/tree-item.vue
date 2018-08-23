@@ -231,7 +231,8 @@
           this.events = events
       },
       mounted () {
-          this.handleGroupMaxHeight()
+          this.handleGroupMaxHeight();
+          console.log(this.childrenCounter);
       }
   }
 </script>

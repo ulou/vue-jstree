@@ -2,6 +2,23 @@
     <div id="app" style="padding-bottom: 300px;">
         <img src="./assets/logo.png">
         <h1>{{ msg }}</h1>
+
+        <h2>Tree view v2</h2>
+        <div>
+            <div style="width:840px; margin: 0 auto;">
+                <div style="width:49%; display:inline-block; vertical-align: top;">
+
+                    <v-jstree :data="data0"
+                              show-checkbox
+                              multiple
+                              allow-batch
+                              whole-row
+                              children-counter
+                              ref="treeMock"></v-jstree>
+                </div></div>
+
+        </div>
+
         <h2>Tree View</h2>
         <div>
             <div style="width:840px; margin: 0 auto;">
@@ -77,6 +94,14 @@
                         </td>
                         <td>
                             <input type="checkbox" v-model="editingItem.selected" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            disabled
+                        </td>
+                        <td>
+                            <input type="checkbox" v-model="editingItem.disabled" />
                         </td>
                     </tr>
                     <tr>
@@ -200,6 +225,76 @@
                         console.log('contextmenu')
                     }
                 },
+                data0: [
+                    {
+                        text: 'A',
+                        selected: false,
+                        children: [
+                            {
+                                text: 'AA',
+                                selected: false,
+                                children: [
+                                    {
+                                        text: 'AAA',
+                                        selected: false,
+                                        children: [
+                                            {text: 'Set 0', selected: false},
+                                            {text: 'Set 1', selected: false},
+                                            {text: 'Set 2', selected: false},
+                                            {text: 'Set 3', selected: false},
+                                            {text: 'Set 4', selected: false}
+                                        ]
+                                    },
+                                    {
+                                        text: 'AAB',
+                                        selected: false,
+                                        children: [
+                                            {text: 'Set 5', selected: false},
+                                            {text: 'Set 6', selected: false},
+                                            {text: 'Set 7', selected: false},
+                                            {text: 'Set 8', selected: false}
+                                        ]
+                                    }
+                                ]
+                            },
+                            {text: 'AB', selected: true},
+                            {text: 'AC', selected: true}
+                        ]
+                    },
+                    {
+                        text: 'B',
+                        selected: true,
+                        children: [
+                            {
+                                text: 'BA',
+                                selected: true,
+                                children: [
+                                    {
+                                        text: 'BAA',
+                                        selected: true,
+                                        children: [
+                                            {text: 'Set 9', selected: true},
+                                            {text: 'Set 10', selected: true},
+                                            {text: 'Set 11', selected: false},
+                                            {text: 'Set 12', selected: true},
+                                            {text: 'Set 13', selected: true}
+                                        ]
+                                    },
+                                    {
+                                        text: 'BAB',
+                                        selected: true,
+                                        children: [
+                                            {text: 'Set 14', selected: true},
+                                            {text: 'Set 15', selected: true},
+                                            {text: 'Set 16', selected: true},
+                                            {text: 'Set 17', selected: true}
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
                 data: [
                     {
                         "text": "Same but with checkboxes",

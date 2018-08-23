@@ -14,6 +14,7 @@
                        :height="sizeHeight"
                        :parent-item="data"
                        :draggable="draggable"
+                       :children-counter="childrenCounter"
                        :drag-over-background-color="dragOverBackgroundColor"
                        :on-item-click="onItemClick"
                        :on-item-toggle="onItemToggle"
@@ -25,6 +26,7 @@
                     <slot :vm="_.vm" :model="_.model">
                         <i :class="_.vm.themeIconClasses" role="presentation" v-if="!_.model.loading"></i>
                         <span v-html="_.model[textFieldName]"></span>
+                        <span v-if="childrenCounter && _.model.children.length">({{childrenCount(_.model)}})</span>
                     </slot>
                 </template>
             </tree-item>
@@ -51,6 +53,7 @@
             multiple: {type: Boolean, default: false},
             allowBatch: {type: Boolean, default: false},
             allowTransition: {type: Boolean, default: true},
+            childrenCounter: {type: Boolean, default: false},
             textFieldName: {type: String, default: 'text'},
             valueFieldName: {type: String, default: 'value'},
             childrenFieldName: {type: String, default: 'children'},
@@ -275,6 +278,15 @@
                     })
                     this.$emit("item-drop", oriNode, oriItem, draggedItem.item, e)
                 }
+            },
+            childrenCount(node) {
+                if (!node || !node.children || node.children.length === 0) return 0;
+                let counter = 0;
+                node.children.forEach(e => {
+                    counter++;
+                    counter += this.childrenCount(e);
+                });
+                return counter;
             }
         },
         created() {
@@ -285,6 +297,8 @@
                 this.$set(this.data, 0, this.initializeLoading())
                 this.handleAsyncLoad(this.data, this)
             }
+            console.log('mounted tree');
+            console.log('childrenCounter: ', this.childrenCounter);
         },
         components: {
             TreeItem
