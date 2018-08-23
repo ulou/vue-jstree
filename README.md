@@ -10,7 +10,7 @@ A extended version of tree plugin for vue2 provided by [vue-jstree](https://gith
 
 ##  DEMO
 
-[Live Demo](https://github.com/ulou/vue-jstree)
+[Live Demo](https://ulou.github.io/vue-jstree/)
 
 ##  NPM
 
