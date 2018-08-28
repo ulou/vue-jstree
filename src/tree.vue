@@ -34,6 +34,7 @@
     </div>
 </template>
 <script>
+    /* eslint-disable */
     import TreeItem from './tree-item.vue'
 
     let ITEM_ID = 0
@@ -120,7 +121,7 @@
                     this[valueFieldName] = item[valueFieldName] || item[textFieldName]
                     this.icon = item.icon || ''
                     this.opened = item.opened || collapse
-                    this.selected = item.selected || false
+                    this.selected = item.selected || 'no'
                     this.disabled = item.disabled || false
                     this.loading = item.loading || false
                     this[childrenFieldName] = item[childrenFieldName] || []
@@ -196,9 +197,9 @@
             },
             handleSingleSelectItems(oriNode, oriItem) {
                 this.handleRecursionNodeChilds(this, node => {
-                    if (node.model) node.model.selected = false
+                    if (node.model) node.model.selected = 'no'
                 })
-                oriNode.model.selected = true
+                oriNode.model.selected = 'yes'
             },
             handleBatchSelectItems(oriNode, oriItem) {
                 this.handleRecursionNodeChilds(oriNode, node => {

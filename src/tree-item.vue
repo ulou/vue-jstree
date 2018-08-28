@@ -29,7 +29,7 @@
                        :show-checkbox="showCheckbox"
                        :allow-transition="allowTransition"
                        :height= "height"
-                       :parent-item="model[childrenFieldName]"
+                       :parent-item="model"
                        :draggable="draggable"
                        :drag-over-background-color="dragOverBackgroundColor"
                        :on-item-click="onItemClick"
@@ -37,6 +37,7 @@
                        :on-item-drag-start="onItemDragStart"
                        :on-item-drag-end="onItemDragEnd"
                        :on-item-drop="onItemDrop"
+                       @updateState="updateState"
                        :klass="index === model[childrenFieldName].length-1?'tree-last':''">
                 <template slot-scope="_">
                     <slot :vm="_.vm" :model="_.model">
@@ -49,7 +50,8 @@
     </li>
 </template>
 <script>
-  export default {
+    /* eslint-disable */
+    export default {
       name: 'TreeItem',
       props: {
           data: {type: Object, required: true},
@@ -107,12 +109,6 @@
                   this.handleGroupMaxHeight()
               },
               deep: true
-          },
-          isAllAnchorsSelected(newVal) {
-              this.model.selected = newVal
-          },
-          isAnyAnchorSelected(newVal) {
-              if (newVal === false) this.mode.selected = false;
           }
       },
       computed: {
@@ -130,35 +126,19 @@
                   {[this.klass]: !!this.klass}
               ]
           },
-          isAnyAnchorSelected() {
-              return this.model.children.some(function recursiveCheck(item) {
-                  if (item.children.length) {
-                      return item.children.some(recursiveCheck)
-                  }
-                  return item.selected
-              });
-          },
-          isAllAnchorsSelected() {
-              return this.model.children.every(function recursiveCheck(item) {
-                  if (item.children.length) {
-                      return item.children.every(recursiveCheck)
-                  }
-                  return item.selected
-              });
-          },
           anchorClasses () {
               return [
                   {'tree-anchor': true},
                   {'tree-disabled': this.model.disabled},
-                  {'tree-selected': this.model.selected},
-                  {'tree-square': this.isAnyAnchorSelected && !this.model.selected},
+                  {'tree-selected': this.model.selected === 'yes'},
+                  {'tree-square': this.model.selected === 'child'},
                   {'tree-hovered': this.isHover}
               ]
           },
           wholeRowClasses () {
               return [
                   {'tree-wholerow': true},
-                  {'tree-wholerow-clicked': this.model.selected},
+                  {'tree-wholerow-clicked': this.model.selected === 'yes'},
                   {'tree-wholerow-hovered': this.isHover}
               ]
           },
@@ -216,8 +196,13 @@
           },
           handleItemClick (e) {
               if (this.model.disabled) return
-              this.model.selected = !this.model.selected
+              switch (this.model.selected) {
+                  case 'yes': this.model.selected = 'no'; break;
+                  case 'no': this.model.selected = 'yes'; break;
+                  case 'child': this.model.selected = 'yes'; break;
+              }
               this.onItemClick(this, this.model, e)
+              this.$emit('updateState');
           },
           handleItemMouseOver () {
               this.isHover = true
@@ -228,6 +213,27 @@
           handleItemDrop (e, oriNode, oriItem) {
               this.$el.style.backgroundColor = "inherit"
               this.onItemDrop(e, oriNode, oriItem)
+          },
+          isAnyChildSelected() {
+              return this.model.children.some(function recursiveCheck(item) {
+                  return item.selected === 'yes' || item.selected === 'child'
+              });
+          },
+          isAllChildrenSelected() {
+              return this.model.children.every(function recursiveCheck(item) {
+                  return item.selected === 'yes'
+              });
+          },
+          updateState() {
+              let getState = () => {
+                  let any = this.isAnyChildSelected();
+                  let all = this.isAllChildrenSelected();
+                  if (any && !all) return 'child';
+                  if (all) return 'yes';
+                  if (!any) return 'no';
+              };
+              this.model.selected = getState();
+              this.$emit('updateState');
           }
       },
       created () {

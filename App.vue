@@ -7,8 +7,7 @@
         <div>
             <div style="width:840px; margin: 0 auto;">
                 <div style="width:49%; display:inline-block; vertical-align: top;">
-
-                    <v-jstree :data="data0"
+                    <v-jstree :data="data"
                               show-checkbox
                               multiple
                               allow-batch
@@ -44,232 +43,82 @@
                         console.log('contextmenu')
                     }
                 },
-                data0: [
+                data: [
                     {
                         text: 'A',
-                        selected: false,
+                        selected: 'child',
                         opened: true,
                         children: [
                             {
                                 text: 'AA',
-                                selected: false,
+                                selected: 'no',
                                 opened: true,
                                 children: [
                                     {
                                         text: 'AAA',
-                                        selected: false,
+                                        selected: 'no',
                                         opened: true,
                                         children: [
-                                            {text: 'Set 0', selected: false},
-                                            {text: 'Set 1', selected: false},
-                                            {text: 'Set 2', selected: false},
-                                            {text: 'Set 3', selected: false},
-                                            {text: 'Set 4', selected: false}
+                                            {text: 'Set 0', selected: 'no', icon: 'fa fa-file-o'},
+                                            {text: 'Set 1', selected: 'no', icon: 'fa fa-file-o'},
+                                            {text: 'Set 2', selected: 'no', icon: 'fa fa-file-o'},
+                                            {text: 'Set 3', selected: 'no', icon: 'fa fa-file-o'},
+                                            {text: 'Set 4', selected: 'no', icon: 'fa fa-file-o'}
                                         ]
                                     },
                                     {
                                         text: 'AAB',
-                                        selected: false,
+                                        selected: 'no',
                                         opened: true,
                                         children: [
-                                            {text: 'Set 5', selected: false},
-                                            {text: 'Set 6', selected: false},
-                                            {text: 'Set 7', selected: false},
-                                            {text: 'Set 8', selected: false}
+                                            {text: 'Set 5', selected: 'no', icon: 'fa fa-file-o'},
+                                            {text: 'Set 6', selected: 'no', icon: 'fa fa-file-o'},
+                                            {text: 'Set 7', selected: 'no', icon: 'fa fa-file-o'},
+                                            {text: 'Set 8', selected: 'no', icon: 'fa fa-file-o'}
                                         ]
                                     }
                                 ]
                             },
-                            {text: 'AB', selected: true},
-                            {text: 'AC', selected: true}
+                            {text: 'AB', selected: 'yes'},
+                            {text: 'AC', selected: 'yes'}
                         ]
                     },
                     {
                         text: 'B',
-                        selected: false,
+                        selected: 'child',
                         opened: true,
                         children: [
                             {
                                 text: 'BA',
-                                selected: false,
+                                selected: 'child',
                                 opened: true,
                                 children: [
                                     {
                                         text: 'BAA',
-                                        selected: false,
+                                        selected: 'child',
                                         opened: true,
                                         children: [
-                                            {text: 'Set 9', selected: true},
-                                            {text: 'Set 10', selected: true},
-                                            {text: 'Set 11', selected: false},
-                                            {text: 'Set 12', selected: true},
-                                            {text: 'Set 13', selected: true}
+                                            {text: 'Set 9', selected: 'yes', icon: 'fa fa-file-o'},
+                                            {text: 'Set 10', selected: 'yes', icon: 'fa fa-file-o'},
+                                            {text: 'Set 11', selected: 'no', icon: 'fa fa-file-o'},
+                                            {text: 'Set 12', selected: 'yes', icon: 'fa fa-file-o'},
+                                            {text: 'Set 13', selected: 'yes', icon: 'fa fa-file-o'}
                                         ]
                                     },
                                     {
                                         text: 'BAB',
-                                        selected: true,
+                                        selected: 'yes',
                                         opened: true,
                                         children: [
-                                            {text: 'Set 14', selected: true},
-                                            {text: 'Set 15', selected: true},
-                                            {text: 'Set 16', selected: true},
-                                            {text: 'Set 17', selected: true}
+                                            {text: 'Set 14', selected: 'yes', icon: 'fa fa-file-o'},
+                                            {text: 'Set 15', selected: 'yes', icon: 'fa fa-file-o'},
+                                            {text: 'Set 16', selected: 'yes', icon: 'fa fa-file-o'},
+                                            {text: 'Set 17', selected: 'yes', icon: 'fa fa-file-o'}
                                         ]
                                     }
                                 ]
                             }
                         ]
-                    }
-                ],
-                data: [
-                    {
-                        "text": "Same but with checkboxes",
-                        "children": [
-                            {
-                                "text": "initially selected",
-                                "selected": true
-                            },
-                            {
-                                "text": "custom icon",
-                                "icon": "fa fa-warning icon-state-danger"
-                            },
-                            {
-                                "text": "initially open",
-                                "icon": "fa fa-folder icon-state-default",
-                                "opened": true,
-                                "children": [
-                                    {
-                                        "text": "Another node"
-                                    }
-                                ]
-                            },
-                            {
-                                "text": "custom icon",
-                                "icon": "fa fa-warning icon-state-warning"
-                            },
-                            {
-                                "text": "disabled node",
-                                "icon": "fa fa-check icon-state-success",
-                                "disabled": true
-                            }
-                        ]
-                    },
-                    {
-                        "text": "Same but with checkboxes",
-                        "opened": true,
-                        "children": [
-                            {
-                                "text": "initially selected",
-                                "selected": true
-                            },
-                            {
-                                "text": "custom icon",
-                                "icon": "fa fa-warning icon-state-danger"
-                            },
-                            {
-                                "text": "initially open",
-                                "icon": "fa fa-folder icon-state-default",
-                                "opened": true,
-                                "children": [
-                                    {
-                                        "text": "Another node"
-                                    }
-                                ]
-                            },
-                            {
-                                "text": "custom icon",
-                                "icon": "fa fa-warning icon-state-warning"
-                            },
-                            {
-                                "text": "disabled node",
-                                "icon": "fa fa-check icon-state-success",
-                                "disabled": true
-                            }
-                        ]
-                    },
-                    {
-                        "text": "And wholerow selection"
-                    },
-                    {
-                        "text": "drag disabled",
-                        "icon": "fa fa-warning icon-state-danger",
-                        "dragDisabled": true
-                    },
-                    {
-                        "text": "drop disabled",
-                        "icon": "fa fa-warning icon-state-danger",
-                        "dropDisabled": true
-                    }
-                ],
-                data2: [
-                    {
-                        "text2": "Same but with checkboxes",
-                        "children2": [
-                            {
-                                "text2": "initially selected",
-                                "selected": true
-                            },
-                            {
-                                "text2": "custom icon",
-                                "icon": "fa fa-warning icon-state-danger"
-                            },
-                            {
-                                "text2": "initially open",
-                                "icon": "fa fa-folder icon-state-default",
-                                "opened": true,
-                                "children2": [
-                                    {
-                                        "text2": "Another node"
-                                    }
-                                ]
-                            },
-                            {
-                                "text2": "custom icon",
-                                "icon": "fa fa-warning icon-state-warning"
-                            },
-                            {
-                                "text2": "disabled node",
-                                "icon": "fa fa-check icon-state-success",
-                                "disabled": true
-                            }
-                        ]
-                    },
-                    {
-                        "text2": "Same but with checkboxes",
-                        "opened": true,
-                        "children2": [
-                            {
-                                "text2": "initially selected",
-                                "selected": true
-                            },
-                            {
-                                "text2": "custom icon",
-                                "icon": "fa fa-warning icon-state-danger"
-                            },
-                            {
-                                "text2": "initially open",
-                                "icon": "fa fa-folder icon-state-default",
-                                "opened": true,
-                                "children2": [
-                                    {
-                                        "text2": "Another node"
-                                    }
-                                ]
-                            },
-                            {
-                                "text2": "custom icon",
-                                "icon": "fa fa-warning icon-state-warning"
-                            },
-                            {
-                                "text2": "disabled node",
-                                "icon": "fa fa-check icon-state-success",
-                                "disabled": true
-                            }
-                        ]
-                    },
-                    {
-                        "text2": "And wholerow selection"
                     }
                 ],
                 asyncData: [],
